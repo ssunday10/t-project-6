@@ -1,10 +1,12 @@
+// variables 
+
 const qwerty = document.getElementById('qwerty');
 const phrase = document.getElementById('phrase');
 const resetButton = document.getElementsByClassName('btn_reset');
-const startButton = document.getElementsByClassName('start');
-const overlay = document.querySelector('overlay');
-
+const startButton = document.createElement('button');
 let missed = 0;
+
+// phrases array
 
 const phrases = [
 
@@ -16,30 +18,18 @@ const phrases = [
     'Beware of dog'
 ];
 
-resetButton.addEventListener('click', (e) => {
-    startGame();
-});
 
-function startGame() {
-   overlay.style.display = "none";
-   addPhraseToDisplay(getRandomPhraseArray(phrases));
-
-};
-
-// 
-function stub () {
-let randomNumber = getRandomPhraseArray.length;
-randomNumber[3];
-};
+// arrow functions
 
 // return a random phrase from an array
 const getRandomPhraseArray = arr => {
-
+  
+        
 };
 
 // adds the letters of a string to the display
 const addPhraseToDisplay = arr => {
-
+   
 }
 
 // check if a letter is in the phrase
@@ -55,10 +45,10 @@ const checkWin = () => {
 
 // listen for the start game button to be pressed
 startButton.addEventListener ( 'click', (e) => {
-    overlay.style.display = 'none';
+
 });
 
 // listen for the onscreen keyboard to be clicked
 qwerty.addEventListener ( 'click', (e) => {
-
+    
 });
