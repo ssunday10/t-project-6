@@ -3,14 +3,14 @@
 const qwerty = document.getElementById('qwerty');
 const phrase = document.getElementById('phrase');
 const resetButton = document.getElementsByClassName('btn_reset');
-const startButton = document.createElement('button');
+const overlay = document.getElementById('overlay');
 let missed = 0;
+
 
 // phrases array
 
 const phrases = [
-
-    'After Tuesday even the calendar says WTF',
+    'better late than never',
     'Slow Children at play',
     'Get out of my kitchen',
     'But Mommy said',
@@ -44,11 +44,14 @@ const checkWin = () => {
 }
 
 // listen for the start game button to be pressed
-startButton.addEventListener ( 'click', (e) => {
+resetButton.addEventListener ( 'click', (e) => {
 
 });
 
 // listen for the onscreen keyboard to be clicked
 qwerty.addEventListener ( 'click', (e) => {
-    
+
 });
+
+// add event listener to reset button
+resetButton.addEventListener('click');
