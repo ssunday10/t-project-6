@@ -32,8 +32,8 @@ const getRandomPhraseArray = arr => {
 
 // output the entire phrases
     const phrasesCopy = phrases.split();
-
 };
+
 
 // adds the letters of a string to the display
 const addPhraseToDisplay = arr => {
