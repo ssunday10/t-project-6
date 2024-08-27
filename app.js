@@ -59,7 +59,6 @@ const checkLetter = button => {
 // check if the game has been won or lost
 const checkWin = () => {
     let correctGuess = false;
-    const number = 5;
     const guess = prompt('Guess a letter');
     if ( +guess === listItem) {
         correctGuess = true;
@@ -78,7 +77,7 @@ function startGame () {
 }
 
 overlay.addEventListener ( 'click', (e) => {
-    if ( event.target.tagName === 'A'){
+    if ( startGame.target.tagName === 'A'){
         startGame();
         overlay.style.display = 'none';
     }
