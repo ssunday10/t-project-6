@@ -49,13 +49,26 @@ const addPhraseToDisplay = arr => {
 
 // check if a letter is in the phrase
 const checkLetter = button => {
-
-
+    if(listItem.includes(letter)) {
+        console.log("The letter is in the phrase.");
+    } else {
+        console.log("The letter is not in the phrase");
+    }
 }
 
 // check if the game has been won or lost
 const checkWin = () => {
-
+    let correctGuess = false;
+    const number = 5;
+    const guess = prompt('Guess a letter');
+    if ( +guess === listItem) {
+        correctGuess = true;
+    } 
+    if (correctGuess === true) {
+        console.log('You guessed a letter in the phrase!');
+    } else {
+        console.log('Sorry, The letter is not in the phrase');
+    }
 }
 
 // listen for the start game button to be pressed (maybe startButton instead of resetButton)
