@@ -34,11 +34,10 @@ const randomPhrase = getRandomPhraseArray(phrases);
 console.log(randomPhrase);
 
 // adds the letters of a string to the display
-const addPhraseToDisplay = arr => {
-
+const addPhraseToDisplay = (arr) => {
     const list = document.querySelector('#phrase > ul');
     
-    phrase.forEach(character => {
+    arr.forEach(character => {
     const listItem = document.createElement('li');
     listItem.textContent = character;
     list.appendChild(listItem);
@@ -54,21 +53,30 @@ const checkLetter = button => {
     } else {
         console.log("The letter is not in the phrase");
     }
+    return letter;
 }
 
 // check if the game has been won or lost
 const checkWin = () => {
-    let correctGuess = false;
-    const guess = prompt('Guess a letter');
-    if ( +guess === listItem) {
-        correctGuess = true;
-    } 
-    if (correctGuess === true) {
-        console.log('You guessed a letter in the phrase!');
-    } else {
-        console.log('Sorry, The letter is not in the phrase');
+    let letter = document.querySelectorAll('.letter');
+    let showLetter = document.querySelectorAll('.show');
+
+    const title = document.querySelector('#overlay h2.title');
+
+    if ( letter.length === showLetter.length) {
+        overlay.style.display = 'flex';
+        title.textContent = 'You Won!';
+        resetButton.textContent = 'Restart Game';
+        overlay.className = 'Win';
+        endGame();
+    } else if ( missed >= attempts) {
+        overlay.style.display = 'flex';
+        title.textContent = 'You Lose';
+        resetButton.textContent = 'Please Try Again';
+        overlay.className = 'lose';
+        endGame();
+        }
     }
-}
 
 // listen for the start game button to be pressed (maybe startButton instead of resetButton)
 function startGame () {
@@ -76,8 +84,9 @@ function startGame () {
     addPhraseToDisplay(arr)
 }
 
+// remove overlay and start the game
 overlay.addEventListener ( 'click', (e) => {
-    if ( startGame.target.tagName === 'A'){
+    if ( e.target.tagName === 'A'){
         startGame();
         overlay.style.display = 'none';
     }
@@ -85,8 +94,47 @@ overlay.addEventListener ( 'click', (e) => {
 
 // listen for the onscreen keyboard to be clicked
 qwerty.addEventListener ( 'click', (e) => {
+    console.log(e.target);
 
+    if (e.target.tagName === 'BUTTON' && !e.target.classList.contains('chosen')) {
+        e.target.classList.add('chosen');
+        e.target.disabled = 'true';
+
+        const letterFound = checkLetter(e.target.textContent);
+        if(!letterFound){
+            lives[missed].firstElementChild.src = 'images/lostHeart.png';
+            missed = missed + 1;
+        }
+    }
+    checkWin();
+    
 });
 
-// add event listener to reset button
-// resetButton.addEventListener('click');
+
+
+function startGame() {
+    const arr = getRandomPhraseArray(phrases);
+    addPhraseToDisplay(arr);
+};
+
+function endGame () {
+    missed = 0;
+    count = 1;
+    arr.length = 0;
+    const listItem = document.querySelectorAll('#phrase > ul > li');
+
+    listItem.forEach ( (e) => {
+        e.remove();
+    })
+
+    const qwertyButton = qwerty.querySelectorAll('button');
+    qwertyButton.forEach (button => {
+        button.classList.remove('chosen');
+        button.disabled = false;
+    })
+
+    lives.forEach(live => {
+        lives.firstElementChild.src = 'images/liveHeart.png';
+    })
+}
+
