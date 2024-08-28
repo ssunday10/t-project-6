@@ -73,12 +73,13 @@ const checkWin = () => {
         overlay.style.display = 'flex';
         title.textContent = 'You Won!';
         resetButton.textContent = 'Restart Game';
-        overlay.className = 'Win';
+        overlay.className = 'win';
         endGame();
+        
     } else if ( missed >= attempts) {
         overlay.style.display = 'flex';
-        title.textContent = 'You Lose';
-        resetButton.textContent = 'Please Try Again';
+        title.textContent = 'You Lose!';
+        resetButton.textContent = 'resetButton';
         overlay.className = 'lose';
         endGame();
         }
@@ -126,7 +127,6 @@ function startGame() {
 function endGame () {
     missed = 0;
     count = 1;
-    arr.length = 0;
     const listItem = document.querySelectorAll('#phrase > ul > li');
 
     listItem.forEach ( (e) => {
