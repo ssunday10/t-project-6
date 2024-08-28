@@ -72,14 +72,14 @@ const checkWin = () => {
     if ( letter.length === showLetter.length) {
         overlay.style.display = 'flex';
         title.textContent = 'You Won!';
-        resetButton.textContent = resetButton;
+        resetButton.style.display = "block";
         overlay.className = 'win';
         endGame();
         
     } else if ( missed >= attempts) {
         overlay.style.display = 'flex';
         title.textContent = 'You Lose!';
-        resetButton.textContent = startGame;
+        resetButton.style.display = "block";
         overlay.className = 'lose';
         endGame();
         }
@@ -96,7 +96,7 @@ overlay.addEventListener ( 'click', (e) => {
     if ( e.target.tagName === 'A'){
         startGame();
         overlay.style.display = 'none';
-    }
+    } 
  });
 
 // listen for the onscreen keyboard to be clicked
@@ -107,12 +107,11 @@ qwerty.addEventListener ( 'click', (e) => {
 
         const letterFound = checkLetters(e.target.textContent);
         if(!letterFound){
-            lives[missed].firstElementChild.src = 'images/lostHeart.png';
+            lives[missed].firstElementChild.src= 'images/lostHeart.png';
             missed = missed + 1;
         }
     }
     checkWin();
-    
 });
 
 
@@ -138,7 +137,6 @@ function endGame () {
     })
 
     lives.forEach(live => {
-        lives.firstElementChild.src = 'images/liveHeart.png';
+        live.firstElementChild.src = 'images/liveHeart.png';
     })
 }
-
