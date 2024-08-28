@@ -47,13 +47,18 @@ const addPhraseToDisplay = (arr) => {
 
 
 // check if a letter is in the phrase
-const checkLetter = button => {
-    if(listItem.includes(letter)) {
-        console.log("The letter is in the phrase.");
-    } else {
-        console.log("The letter is not in the phrase");
-    }
-    return letter;
+const checkLetters = button => {
+    let checkLetters = document.querySelectorAll('#phrase > ul > li.letter');
+    let matchFound = null;
+
+    checkLetters.forEach(letter => {
+        if (letter.textContent.toLocaleLowerCase() === 'button') {
+            letter.classList.add('show');
+            matchFound = true;
+        }
+    })
+
+    return matchFound;
 }
 
 // check if the game has been won or lost
@@ -100,7 +105,7 @@ qwerty.addEventListener ( 'click', (e) => {
         e.target.classList.add('chosen');
         e.target.disabled = 'true';
 
-        const letterFound = checkLetter(e.target.textContent);
+        const letterFound = checkLetters(e.target.textContent);
         if(!letterFound){
             lives[missed].firstElementChild.src = 'images/lostHeart.png';
             missed = missed + 1;
