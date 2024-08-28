@@ -72,14 +72,14 @@ const checkWin = () => {
     if ( letter.length === showLetter.length) {
         overlay.style.display = 'flex';
         title.textContent = 'You Won!';
-        resetButton.textContent = 'Restart Game';
+        resetButton.textContent = 'button';
         overlay.className = 'win';
         endGame();
         
     } else if ( missed >= attempts) {
         overlay.style.display = 'flex';
         title.textContent = 'You Lose!';
-        resetButton.textContent = 'resetButton';
+        resetButton.textContent = 'button';
         overlay.className = 'lose';
         endGame();
         }
@@ -101,8 +101,6 @@ overlay.addEventListener ( 'click', (e) => {
 
 // listen for the onscreen keyboard to be clicked
 qwerty.addEventListener ( 'click', (e) => {
-    console.log(e.target);
-
     if (e.target.tagName === 'BUTTON' && !e.target.classList.contains('chosen')) {
         e.target.classList.add('chosen');
         e.target.disabled = 'true';
