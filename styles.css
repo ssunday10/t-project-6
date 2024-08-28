@@ -154,7 +154,7 @@ button {
 }
 
 .win a {
-  color: var(--color-win);
+  color: white;
 }
 
 .lose {
@@ -162,5 +162,6 @@ button {
 }
 
 .lose a {
-  color: var(--color-lose);
+  color: vwhite;
 }
+

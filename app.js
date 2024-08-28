@@ -72,14 +72,14 @@ const checkWin = () => {
     if ( letter.length === showLetter.length) {
         overlay.style.display = 'flex';
         title.textContent = 'You Won!';
-        resetButton.style.display = "block";
+        resetButton.textContent = 'button';
         overlay.className = 'win';
         endGame();
         
     } else if ( missed >= attempts) {
         overlay.style.display = 'flex';
         title.textContent = 'You Lose!';
-        resetButton.style.display = "block";
+        resetButton.textContent = 'button';
         overlay.className = 'lose';
         endGame();
         }
