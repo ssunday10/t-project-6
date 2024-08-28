@@ -118,6 +118,7 @@ qwerty.addEventListener ( 'click', (e) => {
 });
 
 
+
 function startGame() {
     const arr = getRandomPhraseArray(phrases);
     addPhraseToDisplay(arr);
