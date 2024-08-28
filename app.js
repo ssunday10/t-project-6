@@ -13,11 +13,11 @@ const attempts = 5;
 
 const phrases = [
     'better late than never',
-    'Slow Children at play',
-    'Get out of my kitchen',
-    'But Mommy said',
-    'That is what makes you beautiful',
-    'Beware of dog'
+    'slow children at play',
+    'get out of my kitchen',
+    'but mommy said',
+    'that is what makes you beautiful',
+    'beware of dog'
 ];
 
 
@@ -29,9 +29,9 @@ const getRandomPhraseArray = arr => {
     return arr[randomNumber].split('');
 };
 
-const randomPhrase = getRandomPhraseArray(phrases);
+//const randomPhrase = getRandomPhraseArray(phrases);
 
-console.log(randomPhrase);
+//console.log(randomPhrase);
 
 // adds the letters of a string to the display
 const addPhraseToDisplay = (arr) => {
@@ -49,16 +49,16 @@ const addPhraseToDisplay = (arr) => {
 // check if a letter is in the phrase
 const checkLetters = button => {
     let checkLetters = document.querySelectorAll('#phrase > ul > li.letter');
-    let matchFound = null;
+    let match = null;
 
     checkLetters.forEach(letter => {
-        if (letter.textContent.toLocaleLowerCase() === 'button') {
+        if (letter.textContent.toLocaleLowerCase() === button) {
             letter.classList.add('show');
-            matchFound = true;
+            match = true;
         }
     })
 
-    return matchFound;
+    return match;
 }
 
 // check if the game has been won or lost
@@ -67,6 +67,7 @@ const checkWin = () => {
     let showLetter = document.querySelectorAll('.show');
 
     const title = document.querySelector('#overlay h2.title');
+
 
     if ( letter.length === showLetter.length) {
         overlay.style.display = 'flex';
